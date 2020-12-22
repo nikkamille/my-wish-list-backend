@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_22_051135) do
+ActiveRecord::Schema.define(version: 2020_12_22_055349) do
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.string "url"
+    t.string "image_url"
+    t.integer "wish_list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["wish_list_id"], name: "index_items_on_wish_list_id"
+  end
 
   create_table "wish_lists", force: :cascade do |t|
     t.string "name"
@@ -18,4 +29,5 @@ ActiveRecord::Schema.define(version: 2020_12_22_051135) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "items", "wish_lists"
 end
