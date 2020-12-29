@@ -1,7 +1,8 @@
 class WishListsController < ApplicationController
 
     def index
-        render json: WishList.all
+        wish_lists = WishList.all
+        render json: WishListSerializer.new(wish_lists)
     end
     
     def create
