@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
     def index
         items = Item.all
-        render json: ItemSerializer.new(items)
+        render json: ItemSerializer.new(items).serializable_hash[:data].map{|hash| hash[:attributes]}
     end
     
     def create
