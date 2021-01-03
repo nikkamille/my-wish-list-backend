@@ -2,7 +2,7 @@ class WishListsController < ApplicationController
 
     def index
         wish_lists = WishList.all
-        render json: WishListSerializer.new(wish_lists)
+        render json: WishListSerializer.new(wish_lists).serializable_hash[:data].map{|hash| hash[:attributes]}
     end
     
     def create
