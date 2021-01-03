@@ -1,5 +1,5 @@
 class WishListSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name
+  attributes :id, :name
   has_many :items
 end
