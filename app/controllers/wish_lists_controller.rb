@@ -14,6 +14,7 @@ class WishListsController < ApplicationController
     end
 
     def show
+        wish_list = WishList.find(params[:id])
         render json: wish_list
     end
 
