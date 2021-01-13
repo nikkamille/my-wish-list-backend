@@ -15,7 +15,11 @@ class WishListsController < ApplicationController
 
     def show
         wish_list = WishList.find(params[:id])
-        render json: wish_list
+        render json: {
+            id: params[:id],
+            items: WishListSerializer.new(wish_list, include: [:items]).serializable_hash[:included].map{|hash| hash[:attributes]}
+        }
+        
     end
 
     def destroy
