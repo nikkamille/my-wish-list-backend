@@ -13,6 +13,11 @@ class ItemsController < ApplicationController
         end
     end
 
+    def show
+        item = Item.find(params[:id])
+        render json: ItemSerializer.new(item).serializable_hash[:data][:attributes]
+    end
+
     private
 
     def item_params
