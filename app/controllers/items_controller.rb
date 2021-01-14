@@ -18,6 +18,11 @@ class ItemsController < ApplicationController
         render json: ItemSerializer.new(item).serializable_hash[:data][:attributes]
     end
 
+    def destroy
+        item = Item.find(params[:id])
+        item.destroy
+    end
+
     private
 
     def item_params
